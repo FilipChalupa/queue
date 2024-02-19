@@ -17,7 +17,7 @@ export const createQueue = () => {
 		})
 		items.push({ task, markDone })
 
-		if (items.length === 0) {
+		if (items.length === 1) {
 			runNextItem()
 		}
 
