@@ -13,7 +13,7 @@ npm install @onset/queue
 ### Queue
 
 ```typescript
-import { createQueue } from '@onset/queue'
+import { queue } from '@onset/queue'
 
 const delay = (milliseconds: number) =>
 	new Promise((resolve) => setTimeout(resolve, milliseconds))
@@ -31,7 +31,6 @@ const task3 = async () => {
 	console.log('Task 3')
 }
 
-const queue = createQueue()
 queue.enqueueTask(task1)
 queue.enqueueTask(task2)
 queue.enqueueTask(task3)
@@ -45,14 +44,21 @@ queue.enqueueTask(task3)
 'Task 3' // After 12.5 seconds
 ```
 
+### Custom queue
+
+```typescript
+import { createQueue } from '@onset/queue'
+const myQueue = createQueue()
+```
+
 ### Group helper
 
 ```typescript
-import { queueGroup } from '@onset/queue'
+import { getQueueGroup } from '@onset/queue'
 
-queueGroup('apples').enqueueTask(task1)
-queueGroup('apples').enqueueTask(task2)
-queueGroup('pears').enqueueTask(task3)
+getQueueGroup('apples').enqueueTask(task1)
+getQueueGroup('apples').enqueueTask(task2)
+getQueueGroup('pears').enqueueTask(task3)
 ```
 
 #### Console output:
@@ -61,4 +67,11 @@ queueGroup('pears').enqueueTask(task3)
 'Task 3' // After 4 seconds
 'Task 1' // After 5 seconds
 'Task 2' // After 8.5 seconds
+```
+
+### Custom get queue group
+
+```typescript
+import { createGetQueueGroup } from '@onset/queue'
+const myGetQueueGroup = createGetQueueGroup()
 ```
