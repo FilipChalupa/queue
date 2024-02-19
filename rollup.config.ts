@@ -15,7 +15,6 @@ export default {
 		sourcemap: true,
 		preserveModules: true,
 	},
-	external: ['custom-listenable'],
 	plugins: [
 		del({ targets: path.parse(packageJson.main).dir + '/*' }),
 		resolve(),
